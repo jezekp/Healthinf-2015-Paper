@@ -173,7 +173,7 @@ The mapping presented in Section \ref{Mapping_Code_To_Template} shows transferri
 
 Listing \ref{class_ex} shows an Example of the class \textit{Person} containing several attributes \textit{givenname}, \textit{surname} and \textit{gender} supplemented by metadata annotations (other annotations, class imports, get/set methods, and other fields are omitted for simplicity).
 
-An XML serialization of this class to an odML document is presented in Listing \ref{odml_rep}. The document shows one section named \textit{Person} with a subsection \textit{gender} (note: Because of the XML serialization is quite long, similar subsections representing other attributes are omitted). All restrictions are represented by properties of this section. In addition, because the Java code is reflective, data types or names of attributes can be straightforwardly transferred to odML properties. With respect to commonly used data types String, Integer, DateTime, Float, Char or Boolean are supported. In addition, a combobox data type is used for arrays or lists of values.
+An XML serialization of this class to an odML document is presented in Listing \ref{odml_rep}. The document shows one section named \textit{Person} with two subsection \textit{givenname} and \textit{gender} (note: Because of the XML serialization is quite long, similar subsections representing other attributes are omitted). All restrictions are represented by properties of this section. In addition, because the Java code is reflective, data types or names of attributes can be straightforwardly transferred to odML properties. With respect to commonly used data types String, Integer, DateTime, Float, Char or Boolean are supported. In addition, a combobox data type is used for arrays or lists of values.
 
 
 \scriptsize
@@ -280,11 +280,11 @@ public class Person{
       <property>
         <name>values</name>
         <value>
-          L
+          M
           <type>string</type>
         </value>
         <value>
-          R
+          F
           <type>string</type>
         </value>
         <value>
@@ -317,16 +317,12 @@ annotation}.
 
 \subsection{Templates Generator}
 
-The template generator is a server part of the presented tool. Figure \ref{framework} shows a block diagram of the template generator. It contains two parsers. The parsing process contains two steps. The first parser "Annotations parser" reads data entities, parses their names, attributes, data types and annotations and stores them in an internal model. The template stored in this model is transferred to an odML document. The Annotation parser is driven by user requests that come through a unified API. When the client generates the layout, the data can be downloaded by the second parser, a "Data parser". The Data parser selects requested data and serializes them into the equally structured odML document. In reverse operation,  when data are uploaded, they are deserialized and transferred to related Java classes by an object builder implemented inside the Data parser.
-
-
+The template generator is a server part of the presented tool. Figure \ref{framework} shows a block diagram of the template generator. The parsing process contains two steps. The first parser "Annotations parser" reads data entities, parses their names, attributes, data types and annotations and stores them in an internal model. The template stored in this model is transferred to an odML document. The Annotation parser is driven by user requests that come through a unified API. When the client generates the layout, the data can be downloaded by the second parser, a "Data parser". The Data parser selects requested data and serializes them into the equally structured odML document. In reverse operation,  when data are uploaded, they are deserialized and transferred to related Java classes by an object builder implemented inside the Data parser.
 
 \begin{figure}
 \centering\includegraphics[width=7.5cm, height=6cm]{Framework}
 \caption{\label{framework}Framework for Generating Templates and Data Transfer}
-
 \end{figure}
-
 
 \subsection{Mobile Client}
 
