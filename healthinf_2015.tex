@@ -54,7 +54,7 @@
   tabsize=3
 }
 
-
+\lstset{breaklines=true}
 
 \begin{document}
 
@@ -160,6 +160,7 @@ As a solution we designed a set of annotations described in Table \ref{annotatio
 When the data layer of the database is annotated, it must be mapped to a suitable transport format. Formats solve description of electrophysiology data on different levels of abstraction from low-level binary formats, through highly abstract implementation-independent data formats to formats based on semantic web ontologies. Each approach has its benefits and drawbacks that need to be overcome. We require a format that provides a sufficient level of abstraction to be system independent on one hand, but it should be easy-to-use without any specific requirements for user's knowledge on the other hand. The most flexible formats are Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF or NIX \cite{nix} that are specialized HDF5 for electrophysiology. HDF5 and epHDF5 are the containers for raw binary data and metadata represented in the JSON\footnote{http://json.org/} format. NIX \cite{Stoewer:2014}  provides a data model for storing experimental data in HDF5, together with metadata in the odML format. The odML \cite{10.3389/fninf.2011.00016} is an open format to store and transport metadata more then a container for data. This format brings the following advantages: (1) platform-independence, (2) simplicity and human-readability, (3) ability to transfer layouts as well as metadata with the same format. Because of mentioned benefits of odML we selected it for the framework.
 
 
+
 \section{Implementation}
 
 
@@ -191,12 +192,13 @@ public class Person{
 \normalsize
 
 
-\tiny
 \lstset{language=XML, morekeywords={section, type, name, property, odML, reference, value}, breaklines=true}
+\begin{minipage}[c]{0.45\textwidth}%
 \begin{multicols}{2}[\captionof{lstlisting}{odML Representation}]
 \begin{lstlisting}[label=odml_rep]
+ <odML>
   <section>
-   <type>form</type>
+    <type>form</type>
     <name>Person</name>
     <property>
       <name>label</name>
@@ -213,31 +215,30 @@ public class Person{
       </value>
     </property>
     <section>
-       <type>textbox</type>
-       <name>givenname</name>
-       <property>
-         <name>cardinality</name>
-         <value>
+      <type>textbox</type>
+      <name>givenname</name>
+      <property>
+        <name>cardinality</name>
+        <value>
            1
            <type>int</type>
          </value>
-       </property>
-       <property>
-         <name>required</name>
-         <value>
+      </property>
+      <property>
+        <name>required</name>
+        <value>
            false
            <type>boolean</type>
          </value>
-       </property>
-       <property>
-         <name>datatype</name>
-         <value>
+      </property>
+      <property>
+        <name>datatype</name>
+        <value>
            string
            <type>string</type>
          </value>
-       </property>
-     </section>
-   ...
+      </property>
+    </section>
     <section>
       <type>combobox</type>
       <name>gender</name>
@@ -292,12 +293,12 @@ public class Person{
         </value>
       </property>
     </section>
-  ...
   </section>
 </odML>
 \end{lstlisting}
 \end{multicols}
-\normalsize
+\end{minipage}
+
 
 \begin{definition}
 \label{def:Java_annotation_extraction_process}
