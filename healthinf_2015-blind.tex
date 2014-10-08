@@ -60,12 +60,12 @@
 
 \title{Framework for Collection of Electrophysiology Data}
 
-\author{\authorname{Petr Je\v{z}ek\sup{1}, Roman Mou\v{c}ek\sup{1}, Jakub Krauz\sup{1}, Jaroslav Ho\v{s}ek\sup{1}, Yann Le Franc\sup{2,3,4}, Thomas Wachtler\sup{4}, Jan Grewe\sup{4}}
-\affiliation{\sup{1}Department of Computer Science and Engineering, New Technologies for the Information Society, Faculty of Applied Sciences, University of West Bohemia, Plzen, Czech Republic}
-\affiliation{\sup{2}e-Science Data Factory S.A.S.U., Paris, France}
-\affiliation{\sup{3}Theoretical Neurobiology and Neuroengineering lab University of Antwerp, Wilrijk, Belgium}
-\affiliation{\sup{4}Department Biologie II, Ludwig-Maximilians-Universit\"at M\"unchen, Planegg-Martinsried, Germany}
-\email{\{jezekp, moucek, krauz, axim\}@kiv.zcu.cz, ylefranc@gmail.com, \{wachtler, grewe\}@biologie.uni-muenchen.de}
+\author{\authorname{XXX\sup{1}, XXX\sup{1}, XXX\sup{1}, XXX\sup{1}, XXX\sup{2,3,4}, XXX\sup{4}, XXX\sup{4}}
+\affiliation{\sup{1}XXX, XXX, XXX, XXX, XXX, XXX}
+\affiliation{\sup{2}XXX, XXX, XXX, XXX, XXX, XXX}
+\affiliation{\sup{3}XXX, XXX, XXX, XXX, XXX, XXX}
+\affiliation{\sup{4}XXX, XXX, XXX, XXX, XXX, XXX}
+\email{XXX, XXX, XXX, XXX, XXX, XXX}
 }
 
 \keywords{electrophysiology, mobile app, odML, EEGBase, experimental metadata}
@@ -78,7 +78,7 @@
 
 Large collections of data sets are obtained during electrophysiological experiments. With increasing number of experiments a crucial task is to provide metadata descriptions. These metadata usually include experimental constraints and scenarios, and information about tested subject. Raw data without descriptive metadata are meaningless. At present, due to the penetration of computers into medicine collections of electrophysiology, metadata are moved from paper forms to specialized electrophysiological databases. These databases are accessed via desktop or web based user interfaces using common computers. However, there are common situations when a classic computer is not available. These situations occur in environments such as hospitals or prisons where a wireless connection is usually unavailable. In addition, a lot of experiments are conducted outside laboratories using portable measuring devices. In this case data are obtained offline and then must be backward synchronized with data stored in an electrophysiological database. Electrophysiological databases are based on specific data models. User interfaces implemented on top of these models are non-transferable to other data models. Development of various user interfaces is time consuming, and they are difficult to maintain, consequently it reduces usability. As a solution we present an annotation based framework that aim is to generate a template for client applications. This template contains description of metadata structure of an electrophysiological database. A graphical layout for a specific device is then generated according to the obtained template.  As a first pilot system we have implemented an Android based system that generates a template for mobile devices such as tablets or cell-phones. These devices are connected to the electrophysiological database through the framework API.
 
-The structure of the paper is following. First, we briefly introduce existing electrophysiological databases and mobile-based approaches. Then, we describe a proposed mapping that maps the data model of a database to a template expressed in a transport format. Next, we introduce an implementation the mapping in the framework. The rest of the paper describes validation of the presented approach as a part of a use-case study in which integration of the framework in EEGBase \cite{ISI:000306821100004} is demonstrated.
+The structure of the paper is following. First, we briefly introduce existing electrophysiological databases and mobile-based approaches. Then, we describe a proposed mapping that maps the data model of a database to a template expressed in a transport format. Next, we introduce an implementation the mapping in the framework. The rest of the paper describes validation of the presented approach as a part of a use-case study in which integration of the framework in EEGBase (XXX - ommited for review process) is demonstrated.
 
 \section{State of the Art}
 
@@ -90,15 +90,15 @@ Research in the electrophysiology domain faces a lack of tools and infrastructur
 \item	Helmholtz \cite{10.3389/conf.fninf.2013.09.00025} is a framework for creating neuroscience databases that are customized to the needs of individual neurophysiology labs.
 \item	Carmen \cite{fgibson:Watson2007} is a virtual laboratory that enables a storage of experimental data, experimental protocols, or analysis code. It designs workflows from the stored code and run them remotely.
 \item	INCF Dataspace \cite{dataspace} enables interested research groups to connect to a distributed data file system based on iRods\footnote{http://irods.org/}.
-\item	G-Node\footnote{http://www.g-node.org/} provides tools for data access, data management and data sharing, including a data sharing platform \cite{Sobolev:2014} based on common data models for electrophysiological data and metadata \cite{Garcia:2014,10.3389/fninf.2011.00016}. To structure metadata, G-Node has developed odML, an XML schema for the creation of complex metadata structure in computer-readable format\cite{10.3389/fninf.2011.00016}. The odML data model is used as standard representation within the G-Node infrastructure. An odML mobile editor \cite{10.3389/conf.fninf.2014.18.00053} is currently being developed as a standalone app for Android and iOS platform. This mobile application enables users to create odML structure natively on the app using a Graphical User Interface and to acquire on the fly experimental metadata. These metadata can be processed or shared. In addition, reusable templates can be designed and stored inside the device and filled in later.
-\item	EEGBase \cite{ISI:000306821100004} is a database of well-described EEG/ERP experimental data sets that enables users to upload, download and manage EEG/ERP experiments. A mobile EEGBase client \cite{10.3389/conf.fninf.2013.09.00046} enables users to collect data from EEG/ERP experiments and provides an online synchronization with EEGBase.
+\item	G-Node\footnote{http://www.g-node.org/} provides tools for data access, data management and data sharing, including a data sharing platform (XXX - ommited for review process) based on common data models for electrophysiological data and metadata (XXX - ommited for review process)(XXX - ommited for review process). To structure metadata, G-Node has developed odML, an XML schema for the creation of complex metadata structure in computer-readable format (XXX - ommited for review process). The odML data model is used as standard representation within the G-Node infrastructure. An odML mobile editor (XXX - ommited for review process) is currently being developed as a standalone app for Android and iOS platform. This mobile application enables users to create odML structure natively on the app using a Graphical User Interface and to acquire on the fly experimental metadata. These metadata can be processed or shared. In addition, reusable templates can be designed and stored inside the device and filled in later.
+\item	EEGBase (XXX - ommited for review process) is a database of well-described EEG/ERP experimental data sets that enables users to upload, download and manage EEG/ERP experiments. A mobile EEGBase client(XXX - ommited for review process) enables users to collect data from EEG/ERP experiments and provides an online synchronization with EEGBase.
 
 
 
 \end{itemize}
 
-The first version of the EEGBase database was accessible via a web based user interfaces that allows acquiring, managing and sharing the experimental metadata from a desktop computer. However, it is not always possible to access the web interface in the course of an experiment. We therefore extended the framework to support the use of mobile devices for acquiring experimental metadata \cite{10.3389/fninf.2014.00020}. Our first version was limited to the metadata model predefined in the database. Any modification of the metadata model would require a complete update of the User Interface for the mobile client.
-As creating and maintaining new user-interfaces is time-consuming and requires extensive development resources, the challenge is to elaborate a solution to optimize the further development of this platform. We are proposing here a unique system that allows the automatic creation of specific graphical layouts for various platforms, including mobile devices, web applications, etc. To address this challenge, we transformed the EEGBase framework to use object annotations \cite{6645264} for creating internal templates out of the database and convert it into odML. The odML structure is then transmitted to the mobile device, which can generate automatically a graphical layout for rendering the metadata document.
+The first version of the EEGBase database was accessible via a web based user interfaces that allows acquiring, managing and sharing the experimental metadata from a desktop computer. However, it is not always possible to access the web interface in the course of an experiment. We therefore extended the framework to support the use of mobile devices for acquiring experimental metadata (XXX - ommited for review process). Our first version was limited to the metadata model predefined in the database. Any modification of the metadata model would require a complete update of the User Interface for the mobile client.
+As creating and maintaining new user-interfaces is time-consuming and requires extensive development resources, the challenge is to elaborate a solution to optimize the further development of this platform. We are proposing here a unique system that allows the automatic creation of specific graphical layouts for various platforms, including mobile devices, web applications, etc. To address this challenge, we transformed the EEGBase framework to use object annotations (XXX - ommited for review process) for creating internal templates out of the database and convert it into odML. The odML structure is then transmitted to the mobile device, which can generate automatically a graphical layout for rendering the metadata document.
 The transformation described here marks a first step towards interoperability of the EEGBase portal with the G-Node portal and the integration of our work to propose a unique mobile platform.
 
 \section{Proposed Framework}\label{Framework}
@@ -113,7 +113,7 @@ The client end parses the exported data structure and generates a graphical layo
 
 
 
-The idea initially presented in \cite{6645264} described a client-server system. The server is able to annotate the database layer of an electrophysiology database. Such annotated layer is then serialized to a XML structure and sent to the client. This idea is extended, implemented and validated in this paper.
+The idea initially presented in (XXX - ommited for review process) described a client-server system. The server is able to annotate the database layer of an electrophysiology database. Such annotated layer is then serialized to a XML structure and sent to the client. This idea is extended, implemented and validated in this paper.
 
 \subsection{Mapping Annotated Code to Data Template}\label{Mapping_Code_To_Template}
 
@@ -157,7 +157,7 @@ As a solution we designed a set of annotations described in Table \ref{annotatio
 \caption{\label{annotations}Supported Annotations}
 \end{table}
 
-When the data layer of the database is annotated, it must be mapped to a suitable transport format. Formats solve description of electrophysiology data on different levels of abstraction from low-level binary formats, through highly abstract implementation-independent data formats to formats based on semantic web ontologies. Each approach has its benefits and drawbacks that need to be overcome. We require a format that provides a sufficient level of abstraction to be system independent on one hand, but it should be easy-to-use without any specific requirements for user's knowledge on the other hand. The most flexible formats are Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF or NIX \cite{nix} that are specialized HDF5 for electrophysiology. HDF5 and epHDF5 are the containers for raw binary data and metadata represented in the JSON\footnote{http://json.org/} format. NIX \cite{Stoewer:2014}  provides a data model for storing experimental data in HDF5, together with metadata in the odML format. The odML \cite{10.3389/fninf.2011.00016} is an open format to store and transport metadata more then a container for data. This format brings the following advantages: (1) platform-independence, (2) simplicity and human-readability, (3) ability to transfer layouts as well as metadata with the same format. Because of mentioned benefits of odML we selected it for the framework.
+When the data layer of the database is annotated, it must be mapped to a suitable transport format. Formats solve description of electrophysiology data on different levels of abstraction from low-level binary formats, through highly abstract implementation-independent data formats to formats based on semantic web ontologies. Each approach has its benefits and drawbacks that need to be overcome. We require a format that provides a sufficient level of abstraction to be system independent on one hand, but it should be easy-to-use without any specific requirements for user's knowledge on the other hand. The most flexible formats are Hierarchical Data Format (HDF5) \cite{hdf5} or respectively epHDF or NIX (XXX - ommited for review process) that are specialized HDF5 for electrophysiology. HDF5 and epHDF5 are the containers for raw binary data and metadata represented in the JSON\footnote{http://json.org/} format. NIX (XXX - ommited for review process) provides a data model for storing experimental data in HDF5, together with metadata in the odML format. The odML (XXX - ommited for review process) is an open format to store and transport metadata more then a container for data. This format brings the following advantages: (1) platform-independence, (2) simplicity and human-readability, (3) ability to transfer layouts as well as metadata with the same format. Because of mentioned benefits of odML we selected it for the framework.
 
 
 
@@ -340,7 +340,7 @@ The mobile client is a framework implemented for the Android platform. A client 
 
 The main focus of the research group are methods and techniques of electroencephalography (EEG) and event-related-potentials (ERP). Experiments are conducted in a dedicated laboratory equipped with highly specialized hardware and software. Besides this laboratory, we are equipped with a mobile laboratory that enables us to perform experiments outside. In addition we are collaborating between several INCF National Nodes, including German, Belgian, Czech, USA or Japan Nodes. Our equipment and a lot of discussion with our colleagues motivate us to design and test the solution described.
 
-Experimental procedure follows several steps.  Experiments are performed according to defined scenario. Then data and metadata are collected. These data are analyzed and results are stored and published. The central point of this infrastructure is EEGBase \cite{DBLP:conf/biostec/JezekSBM13} that serves for storing and management of EEG/ERP experiments.
+Experimental procedure follows several steps.  Experiments are performed according to defined scenario. Then data and metadata are collected. These data are analyzed and results are stored and published. The central point of this infrastructure is EEGBase (XXX - ommited for review process) that serves for storing and management of EEG/ERP experiments.
 
 Although the system uses a web-based interface, many experiments are conducted outside the laboratory where a common computer, or Internet access are not available. The aim of this use case is to validate the integration of the presented framework and generation of templates according to data structure. Generation of templates is controlled by an Android phone. When the template is generated, new data can be collected and synchronized with EEGBase.
 
@@ -348,7 +348,7 @@ Although the system uses a web-based interface, many experiments are conducted o
 
 
 
-EEGBase\footnote{https://eegdatabase.kiv.zcu.cz} provides a simple wizard that guides the user when uploading experiments. The user is instructed what metadata have to be filled in. The collected metadata respecting experience of our research partners with designing and performing experiments and experimental scenarios. The metadata follow ontology described in \cite{BMEI_jezek_moucek}. A user interface preview is shown in Figure \ref{portal}.
+EEGBase\footnote{https://eegdatabase.kiv.zcu.cz} provides a simple wizard that guides the user when uploading experiments. The user is instructed what metadata have to be filled in. The collected metadata respecting experience of our research partners with designing and performing experiments and experimental scenarios. The metadata follow ontology described in (XXX - ommited for review process). A user interface preview is shown in Figure \ref{portal}.
 
 The core structure contains the following semantic metadata groups:
 
@@ -479,11 +479,7 @@ String description\\
 
 Since EEGBase implements RESTful web services \cite{Richardson:2007:RWS:1406352}, control of the framework API by client requests is ensured. We implemented two methods; one for listing available templates and the second one for downloading a selected template\footnote{All API methods all described more in detail in a project wiki page: https://github.com/INCF/eeg-database/wiki/RESTful-API}.
 
-\subsection{Mobile Client} \label{Mobile_Client}
 
-The mobile client uses common design of Android applications. Main activities of the use-case study are shown in several screen-shots in Figure \ref{fig:mob_app_prev}. Because the client is intended to work with various electrophysiological databases, it enables creating separate workspaces where each workspace works with different user credentials. In Figure \ref{fig:mob_app_preva} the user creates a new workspace. Users credentials are optional because the client can work as a stand alone system as well. In Figure \ref{fig:mob_app_prevb} available layouts are listed; the user can download them. Finally, in Figure \ref{fig:mob_app_prevc} the user can download data from the server or add new data as shown in Figure \ref{fig:mob_app_prevd}.
-
-By following the described steps we created one workspace connected to EEGBase (see Figure\ref{fig:mob_app_preva}) and downloaded available layouts (Person, Scenario, Experiment and DataFile as listed in Figure \ref{fig:mob_app_prevb}). When the layouts were downloaded experiments from the server were listed (see Figure \ref{fig:mob_app_prevc}). Finally, we add several new experiments using form listed in Figure \ref{fig:mob_app_prevd}. These experiments were stored on the server.
 
 \begin{figure*}
 % Use the relevant command to insert your figure file.
@@ -498,6 +494,12 @@ By following the described steps we created one workspace connected to EEGBase (
 \caption{Mobile Application Use Case Preview}
 \label{fig:mob_app_prev}
 \end{figure*}
+
+\subsection{Mobile Client} \label{Mobile_Client}
+
+The mobile client uses common design of Android applications. Main activities of the use-case study are shown in several screen-shots in Figure \ref{fig:mob_app_prev}. Because the client is intended to work with various electrophysiological databases, it enables creating separate workspaces where each workspace works with different user credentials. In Figure \ref{fig:mob_app_preva} the user creates a new workspace. Users credentials are optional because the client can work as a stand alone system as well. In Figure \ref{fig:mob_app_prevb} available layouts are listed; the user can download them. Finally, in Figure \ref{fig:mob_app_prevc} the user can download data from the server or add new data as shown in Figure \ref{fig:mob_app_prevd}.
+
+By following the described steps we created one workspace connected to EEGBase (see Figure\ref{fig:mob_app_preva}) and downloaded available layouts (Person, Scenario, Experiment and DataFile as listed in Figure \ref{fig:mob_app_prevb}). When the layouts were downloaded experiments from the server were listed (see Figure \ref{fig:mob_app_prevc}). Finally, we add several new experiments using form listed in Figure \ref{fig:mob_app_prevd}. These experiments were stored on the server.
 
 
 
@@ -587,8 +589,8 @@ By following the described steps we created one workspace connected to EEGBase (
 
 The proposed solution works satisfactorily and the presented use-case study validates its functionality on real data. However, the presented pilot implementation has several gaps that are planned to be overcome.
 
-First, we will focus our effort on developing the mobile client to offer the possibility to create templates natively on the client, allowing to work offline. For this purpose, we will merge efforts between the EEGBase client and the mobile odML editor \cite{10.3389/conf.fninf.2014.18.00053} to propose a unique mobile client that would work on both database. With this work, we will be able to extend 1- the interoperability between these two resources and 2- extend the functionalities of the mobile client presented here to iOS and ultimately to more platforms\footnote{several frameworks as http://phonegap.com/ enables development of platform independent mobile applications}.
-Secondly, we will address the problem of data and metadata storage on both client and server sides. As electrophysiological data are heterogeneous, the usage of NoSQL databases seems to be more practical. Our first tests prove \cite{Jezek2014422} that a shift from a relational database to a NoSQL one brings a lot of benefits handling metadata. The major step is to propose a suitable mapping of heterogeneous metadata stored in a NoSQL database to a suitable data template. Finally, we are planning to extend the server part of the framework to work with a larger diversity of servers than Java-based servers.
+First, we will focus our effort on developing the mobile client to offer the possibility to create templates natively on the client, allowing to work offline. For this purpose, we will merge efforts between the EEGBase client and the mobile odML editor (XXX - ommited for review process) to propose a unique mobile client that would work on both database. With this work, we will be able to extend 1- the interoperability between these two resources and 2- extend the functionalities of the mobile client presented here to iOS and ultimately to more platforms\footnote{several frameworks as http://phonegap.com/ enables development of platform independent mobile applications}.
+Secondly, we will address the problem of data and metadata storage on both client and server sides. As electrophysiological data are heterogeneous, the usage of NoSQL databases seems to be more practical. Our first tests prove (XXX - ommited for review process) that a shift from a relational database to a NoSQL one brings a lot of benefits handling metadata. The major step is to propose a suitable mapping of heterogeneous metadata stored in a NoSQL database to a suitable data template. Finally, we are planning to extend the server part of the framework to work with a larger diversity of servers than Java-based servers.
 
 
 
@@ -605,11 +607,7 @@ Experiments in electrophysiology domain produce a lot of collections of semi-str
 
 % use section* for acknowledgement
 \section*{Acknowledgment}
-
-
-This work was supported by the European Regional Development Fund (ERDF), Project "NTIS - New Technologies for Information Society", European Centre of Excellence, CZ.1.05/1.1.00/02.0090, the UWB grant SGS-2013-039 Methods and Applications of Bio- and Medical Informatics, and the German Federal Ministry of Education and Research grant 01GQ1302.
-
-
+(XXX - ommited for review process)
 
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
