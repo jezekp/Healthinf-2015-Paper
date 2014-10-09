@@ -170,6 +170,21 @@ When the data layer of the database is annotated, it must be mapped to a suitabl
 The mapping presented in Section \ref{Mapping_Code_To_Template} shows transferring persistent Java classes to templates. Then, these templates are mapped to odML representation and transferred to the client. OdML is based on \textit{Sections} that can contain \textit{Properties} and \textit{Values}. Moreover, each section can contain subsections (tree-like structures can be created). In our approach forms are represented by sections, items by subsections and restrictions by properties. Definition \ref{def:Java_annotation_extraction_process} formalizes an extraction process from Java Annotations to corresponding odML representation.
 
 
+\begin{definition}
+\label{def:Java_annotation_extraction_process}
+(Java annotation extraction process)
+
+\emph{The process is the transformation of a set of Java annotations JA to an odML Section S in the odML document D that satisfies:}
+
+\emph{$\forall$ $JA{}_{\text{i}}\in {(@Form)}$ $\exists$ odML Section $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{i}}$ $\in$ a class annotation}.
+
+\emph{$\forall$ $JA{}_{\text{j}}\in {(@FormItem)}$ $\exists$ odML Section $S{}_{\text{j}}$ $\subset$ $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{j}}$ $\in$ a property
+annotation}.
+
+\emph{$\forall$ $JA{}_{\text{k}}\in {(@FormRestriction)}$ $\exists$ odML Property $P{}_{\text{k}}$ $\in$ $S{}_{\text{j}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{k}}$ $\in$ a property  annotation}.
+
+\end{definition}
+
 
 Listing \ref{class_ex} shows an Example of the class \textit{Person} containing several attributes \textit{givenname}, \textit{surname} and \textit{gender} supplemented by metadata annotations (other annotations, class imports, get/set methods, and other fields are omitted for simplicity).
 
@@ -299,21 +314,6 @@ public class Person{
 \end{multicols}
 \end{minipage}
 
-
-\begin{definition}
-\label{def:Java_annotation_extraction_process}
-(Java annotation extraction process)
-
-\emph{The process is the transformation of a set of Java annotations JA to an odML Section S in the odML document D that satisfies:}
-
-\emph{$\forall$ $JA{}_{\text{i}}\in {(@Form)}$ $\exists$ odML Section $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{i}}$ $\in$ a class annotation}.
-
-\emph{$\forall$ $JA{}_{\text{j}}\in {(@FormItem)}$ $\exists$ odML Section $S{}_{\text{j}}$ $\subset$ $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{j}}$ $\in$ a property
-annotation}.
-
-\emph{$\forall$ $JA{}_{\text{k}}\in {(@FormRestriction)}$ $\exists$ odML Property $P{}_{\text{k}}$ $\in$ $S{}_{\text{j}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{k}}$ $\in$ a property  annotation}.
-
-\end{definition}
 
 \subsection{Templates Generator}
 
