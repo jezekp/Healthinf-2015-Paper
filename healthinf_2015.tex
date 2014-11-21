@@ -170,10 +170,24 @@ When the data layer of the database is annotated, it must be mapped to a suitabl
 The mapping presented in Section \ref{Mapping_Code_To_Template} shows transferring persistent Java classes to templates. Then, these templates are mapped to odML representation and transferred to the client. OdML is based on \textit{Sections} that can contain \textit{Properties} and \textit{Values}. Moreover, each section can contain subsections (tree-like structures can be created). In our approach forms are represented by sections, items by subsections and restrictions by properties. Definition \ref{def:Java_annotation_extraction_process} formalizes an extraction process from Java Annotations to corresponding odML representation.
 
 
+\begin{definition}
+\label{def:Java_annotation_extraction_process}
+(Java annotation extraction process)
+
+\emph{The process is the transformation of a set of Java annotations JA to an odML Section S in the odML document D that satisfies:}
+
+\emph{$\forall$ $JA{}_{\text{i}}\in {(@Form)}$ $\exists$ odML Section $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{i}}$ $\in$ a class annotation}.
+
+\emph{$\forall$ $JA{}_{\text{j}}\in {(@FormItem)}$ $\exists$ odML Section $S{}_{\text{j}}$ $\subset$ $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{j}}$ $\in$ a property
+annotation}.
+
+\emph{$\forall$ $JA{}_{\text{k}}\in {(@FormRestriction)}$ $\exists$ odML Property $P{}_{\text{k}}$ $\in$ $S{}_{\text{j}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{k}}$ $\in$ a property  annotation}.
+
+\end{definition}
+
 
 Listing \ref{class_ex} shows an Example of the class \textit{Person} containing several attributes \textit{givenname}, \textit{surname} and \textit{gender} supplemented by metadata annotations (other annotations, class imports, get/set methods, and other fields are omitted for simplicity).
 
-An XML serialization of this class to an odML document is presented in Listing \ref{odml_rep}. The document shows one section named \textit{Person} with two subsection \textit{givenname} and \textit{gender} (note: Because of the XML serialization is quite long, similar subsections representing other attributes are omitted). All restrictions are represented by properties of this section. In addition, because the Java code is reflective, data types or names of attributes can be straightforwardly transferred to odML properties. With respect to commonly used data types String, Integer, DateTime, Float, Char or Boolean are supported. In addition, a combobox data type is used for arrays or lists of values.
 
 
 \scriptsize
@@ -192,128 +206,116 @@ public class Person{
 \normalsize
 
 
+An XML serialization of this class to an odML document is presented in Listing \ref{odml_rep}. The document shows one section named \textit{Person} with two subsection \textit{givenname} and \textit{gender} (note: Because of the XML serialization is quite long, similar subsections representing other attributes are omitted). All restrictions are represented by properties of this section. In addition, because the Java code is reflective, data types or names of attributes can be straightforwardly transferred to odML properties. With respect to commonly used data types String, Integer, DateTime, Float, Char or Boolean are supported. In addition, a combobox data type is used for arrays or lists of values.
+
+
 \lstset{language=XML, morekeywords={section, type, name, property, odML, reference, value}, breaklines=true}
-\begin{minipage}[c]{0.45\textwidth}%
+\begin{minipage}[c]{0.44\textwidth}%
 \begin{multicols}{2}[\captionof{lstlisting}{odML Representation}]
 \begin{lstlisting}[label=odml_rep]
- <odML>
-  <section>
-    <type>form</type>
-    <name>Person</name>
+<odML>
+ <section>
+  <type>form</type>
+   <name>Person</name>
     <property>
-      <name>label</name>
+     <name>label</name>
       <value>
-        Person
-        <type>string</type>
+       Person
+       <type>string</type>
       </value>
     </property>
     <property>
-      <name>layoutName</name>
-      <value>
-        Person-generated
-        <type>string</type>
-      </value>
+     <name>layoutName</name>
+     <value>
+      Person-generated
+      <type>string</type>
+     </value>
     </property>
     <section>
-      <type>textbox</type>
-      <name>givenname</name>
-      <property>
-        <name>cardinality</name>
-        <value>
-           1
-           <type>int</type>
-         </value>
+     <type>textbox</type>
+     <name>givenname</name>
+     <property>
+      <name>cardinality</name>
+      <value>
+       1
+        <type>int</type>
+      </value>
       </property>
       <property>
-        <name>required</name>
-        <value>
-           false
-           <type>boolean</type>
-         </value>
+       <name>required</name>
+       <value>
+        false
+        <type>boolean</type>
+       </value>
       </property>
       <property>
-        <name>datatype</name>
-        <value>
-           string
-           <type>string</type>
-         </value>
+       <name>datatype</name>
+       <value>
+        string
+         <type>string</type>
+       </value>
       </property>
     </section>
     <section>
-      <type>combobox</type>
-      <name>gender</name>
+     <type>combobox</type>
+     <name>gender</name>
       <property>
-        <name>label</name>
-        <value>
-          Gender
-          <type>string</type>
-        </value>
+       <name>label</name>
+       <value>
+        Gender
+         <type>string</type>
+       </value>
       </property>
       <property>
-        <name>cardinality</name>
-        <value>
-          1
-          <type>int</type>
-        </value>
+       <name>cardinality</name>
+       <value>
+        1
+        <type>int</type>
+       </value>
       </property>
       <property>
-        <name>required</name>
-        <value>
-          true
-          <type>boolean</type>
-        </value>
+       <name>required</name>
+       <value>
+        true
+        <type>boolean</type>
+       </value>
       </property>
       <property>
-        <name>datatype</name>
-        <value>
-          string
-          <type>string</type>
-        </value>
+       <name>datatype</name>
+       <value>
+        string
+         <type>string</type>
+       </value>
       </property>
       <property>
-        <name>defaultValue</name>
-        <value>
-          X
-          <type>string</type>
-        </value>
+       <name>defaultValue</name>
+       <value>
+        X
+        <type>string</type>
+       </value>
       </property>
       <property>
-        <name>values</name>
-        <value>
-          M
-          <type>string</type>
-        </value>
-        <value>
-          F
-          <type>string</type>
-        </value>
-        <value>
-          X
-          <type>string</type>
-        </value>
-      </property>
-    </section>
-  </section>
+       <name>values</name>
+       <value>
+        M
+        <type>string</type>
+       </value>
+       <value>
+        F
+        <type>string</type>
+       </value>
+       <value>
+        X
+        <type>string</type>
+       </value>
+     </property>
+   </section>
+ </section>
 </odML>
 \end{lstlisting}
 \end{multicols}
 \end{minipage}
 
-
-\begin{definition}
-\label{def:Java_annotation_extraction_process}
-(Java annotation extraction process)
-
-\emph{The process is the transformation of a set of Java annotations JA to an odML Section S in the odML document D that satisfies:}
-
-\emph{$\forall$ $JA{}_{\text{i}}\in {(@Form)}$ $\exists$ odML Section $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{i}}$ $\in$ a class annotation}.
-
-\emph{$\forall$ $JA{}_{\text{j}}\in {(@FormItem)}$ $\exists$ odML Section $S{}_{\text{j}}$ $\subset$ $S{}_{\text{i}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{j}}$ $\in$ a property
-annotation}.
-
-\emph{$\forall$ $JA{}_{\text{k}}\in {(@FormRestriction)}$ $\exists$ odML Property $P{}_{\text{k}}$ $\in$ $S{}_{\text{j}}$ $\in$ D $\Rightarrow$ $JA{}_{\text{k}}$ $\in$ a property  annotation}.
-
-\end{definition}
 
 \subsection{Templates Generator}
 
@@ -489,10 +491,10 @@ By following the described steps we created one workspace connected to EEGBase (
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 \begin{tabular}{c}
-\subfloat[The user can create a new workspace]{\includegraphics[width = 3.5cm, height=5.5cm]{2014-07-02090600}\label{fig:mob_app_preva}}
-\hspace{10pt}\subfloat[Then select available layout]{\includegraphics[width = 3.5cm, height=5.5cm]{2014-06-26140214}\label{fig:mob_app_prevb}}
-\hspace{10pt}\subfloat[Finally list data]{\includegraphics[width = 3.5cm, height=5.5cm]{2014-06-26135912}\label{fig:mob_app_prevc}}
-\hspace{10pt}\subfloat[He/she can add a new item when clicks to a + button]{\includegraphics[width = 4cm, height=7cm]{2014-07-03151609}\label{fig:mob_app_prevd}}
+\subfloat[The user can create a new workspace]{\includegraphics[width = 3.5cm, height=5.0cm]{2014-07-02090600}\label{fig:mob_app_preva}}
+\hspace{10pt}\subfloat[Then select available layout]{\includegraphics[width = 3.5cm, height=5.0cm]{2014-06-26140214}\label{fig:mob_app_prevb}}
+\hspace{10pt}\subfloat[Finally list data]{\includegraphics[width = 3.5cm, height=5.0cm]{2014-06-26135912}\label{fig:mob_app_prevc}}
+\hspace{10pt}\subfloat[He/she can add a new item when clicks to a + button]{\includegraphics[width = 3.5cm, height=5.0cm]{2014-07-03151609}\label{fig:mob_app_prevd}}
 \end{tabular}
 % figure caption is below the figure
 \caption{Mobile Application Use Case Preview}
